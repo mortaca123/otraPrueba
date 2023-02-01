@@ -13,7 +13,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(cors({origin: '*'}));
+var cors = require('cors');
+
+// use it before all route definitions
+app.use(cors({origin: 'http://localhost:4200'}));
 
 app.use('/', indexRouter);
 app.use('/quotes', quotesRouter);
