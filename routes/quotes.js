@@ -4,6 +4,7 @@ const quotes = require('../services/quotes');
 
 /* GET quotes listing. */
 router.get('/', async function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
   try {
     res.json(await quotes.getMultiple(req.query.page));
   } catch (err) {
